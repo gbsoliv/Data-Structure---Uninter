@@ -5,39 +5,42 @@ class ListaEncadeadaSimples:
             self.cardNumber = cardNumber    
             self.proximo = None
 
+        def __repr__(self):
+            return self.nodo
+
     def __init__(self):
         self.head = None
         self.contadorVerde = 1
         self.contadorAmarelo = 201
 
         
-def inserirSemPrioridade(self, nodo):
-    if self.head is None:
-        self.head = nodo
-    else:
+    def inserirSemPrioridade(self, nodo):
+        if self.head is None:
+            self.head = nodo
+        else:
+            nodoAtual = self.head
+            while nodoAtual.proximo is not None:
+                nodoAtual = nodoAtual.proximo
+            nodoAtual.proximo = nodo
+        
+
+    def inserirComPrioridade(self, nodo):
         nodoAtual = self.head
-        while nodoAtual.proximo is not None:
+        anterior = None 
+        while nodoAtual is not None:
+            if nodoAtual.card == 'A' and nodo.cardNumber < nodoAtual.cardNumber:
+                break
+            if nodoAtual.card == 'V':
+                break
+            anterior = nodoAtual
             nodoAtual = nodoAtual.proximo
-        nodoAtual.proximo = nodo
-    
 
-def inserirComPrioridade(self, nodo):
-    nodoAtual = self.head
-    anterior = None 
-    while nodoAtual is not None:
-        if nodoAtual.card == 'A' and nodo.cardNumber < nodoAtual.cardNumber:
-            break
-        if nodoAtual.card == 'V':
-            break
-        anterior = nodoAtual
-        nodoAtual = nodoAtual.proximo
-
-    if anterior is None:
-        nodo.proximo = self.head
-        self.head = nodo
-    else:
-        nodo.proximo = nodoAtual
-        anterior.proximo = nodo
+        if anterior is None:
+            nodo.proximo = self.head
+            self.head = nodo
+        else:
+            nodo.proximo = nodoAtual
+            anterior.proximo = nodo
 
     def inserir(self, card):
         if card == 'A':
@@ -56,13 +59,15 @@ def inserirComPrioridade(self, nodo):
         else:
             self.inserirSemPrioridade(nodo)
 
+    def imprimirListaEspera(self):
+        print("Lista --> ", end="")
+        nodoAtual = self.head
+        while nodoAtual is not None:
+            print(f"[{nodoAtual.card} {nodoAtual.cardNumber}]", end=" ")
+            nodoAtual = nodoAtual.proximo
 
-def imprimirListaEspera():
-    # Função para imprimir a lista de espera
-    pass
 
 def atenderPaciente():
-    # Função para atender o paciente
     pass
 
 
@@ -71,21 +76,20 @@ fila = ListaEncadeadaSimples()
 
 while True: 
     option = int(input(''' 
-      [1] Adicionar paciente a fila.
-      [2] Mostrar pacientes na fila.
-      [3] Chamar paciente.
-      [4] Sair.
-      Escolha uma opção: 
-      ''' ))
+        [1] Adicionar paciente a fila.
+        [2] Mostrar pacientes na fila.
+        [3] Chamar paciente.
+        [4] Sair.
+        Escolha uma opção: 
+        ''' ))
 
     if option == 1:
         card = input('Informe a cor do cartão do paciente: (A/V) ').upper()
         fila.inserir(card)
 
     elif option == 2:
-        print('LISTA DE PACIENTES:')
         fila.imprimirListaEspera()
-        
+    
     elif option == 3:
         fila.atenderPaciente()
         
