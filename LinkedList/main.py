@@ -1,9 +1,19 @@
-#retirar os comentários e completar o código
+class ListaEncadeadaSimples:
+    class Nodo:
+        def __init__(self, card, cardNumber):
+            self.card = card
+            self.cardNumber = cardNumber    
+            self.proximo = None
 
-def inserir():
-  card = input('Informe a cor do cartão do paciente: (A/V) ')
-  cardNumber = int(input('Informe o número do cartão do paciente: '))
-  
+    def __init__(self):
+        self.head = None
+
+    def inserir(self, card, cardNumber):
+        new = self.Nodo(card, cardNumber)
+        if self.head is None:
+            self.head = new
+
+
 def inserirSemPrioridade(nodo):
     # Função para inserir paciente sem prioridade
     pass
@@ -20,8 +30,8 @@ def atenderPaciente():
     # Função para atender o paciente
     pass
 
-# Inicio do codigo principal
 
+# PROGRAMA PRINCIPAL
 while True: 
     option = int(input(print(''' 
       [1] Adicionar paciente a fila.
@@ -32,8 +42,9 @@ while True:
       ''' )))
 
     if option == 1:
-        inserir()
-        # Aqui você deve adicionar o paciente na fila de espera.
+        card = input('Informe a cor do cartão do paciente: (A/V) ')
+        cardNumber = int(input('Informe o número do cartão do paciente: '))
+        fila.inserir(card, cardNumber)
     elif option == 2:
         print('LISTA DE PACIENTES:')
         imprimirListaEspera()
