@@ -7,17 +7,10 @@ class ListaEncadeadaSimples:
 
     def __init__(self):
         self.head = None
+        self.contadorVerde = 1
+        self.contadorAmarelo = 201
 
-    def inserir(self, card, cardNumber):
-        nodo = self.Nodo(card, cardNumber)
-        if self.head is None:
-            self.head = nodo
-
-        if card == 'A':
-            self.inserirComPrioridade(nodo)
-        else:
-            self.inserirSemPrioridade(nodo)
-
+        
 def inserirSemPrioridade(self, nodo):
     if self.head is None:
         self.head = nodo
@@ -46,6 +39,23 @@ def inserirComPrioridade(self, nodo):
         nodo.proximo = nodoAtual
         anterior.proximo = nodo
 
+    def inserir(self, card):
+        if card == 'A':
+            cardNumber = self.contadorAmarelo
+            self.contadorAmarelo += 1
+        else:
+            cardNumber = self.contadorVerde
+            self.contadorVerde += 1
+
+        nodo = self.Nodo(card, cardNumber)
+
+        if self.head is None:
+            self.head = nodo
+        elif card == 'A':
+            self.inserirComPrioridade(nodo)
+        else:
+            self.inserirSemPrioridade(nodo)
+
 
 def imprimirListaEspera():
     # Função para imprimir a lista de espera
@@ -70,8 +80,7 @@ while True:
 
     if option == 1:
         card = input('Informe a cor do cartão do paciente: (A/V) ').upper()
-        cardNumber = int(input('Informe o número do cartão do paciente: '))
-        fila.inserir(card, cardNumber)
+        fila.inserir(card)
 
     elif option == 2:
         print('LISTA DE PACIENTES:')
