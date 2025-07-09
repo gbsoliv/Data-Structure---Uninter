@@ -1,4 +1,3 @@
-# Project about data structures using linked list and hash table 
 
 ## 1. Hospital Triage System
 This project simulates a **patient queue** using a simple linked list, prioritizing patients with a **Yellow card (A)** (more urgent) over those with a **Green card (V)** (less urgent).
