@@ -65,13 +65,16 @@ class ListaEncadeadaSimples:
         while nodoAtual is not None:
             print(f"[{nodoAtual.card} {nodoAtual.cardNumber}]", end=" ")
             nodoAtual = nodoAtual.proximo
+    
+
+    def atenderPaciente(self, ):
+        chamandoPaciente = self.head
+        print(f'Atendendo o paciente cartao cor: {chamandoPaciente.card} e numero: {chamandoPaciente.cardNumber}')
+        self.head = self.head.proximo
 
 
-def atenderPaciente():
-    pass
 
-
-# PROGRAMA PRINCIPAL
+############## 
 fila = ListaEncadeadaSimples()
 
 while True: 
@@ -98,6 +101,3 @@ while True:
         break
     else:
         print('Opção inválida. Por favor, tente novamente.')
-
-
-
